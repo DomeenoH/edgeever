@@ -17,7 +17,6 @@ export const getOfficialMermaidThemeVariables = (palette: MermaidThemePalette) =
     tertiaryColor: surface,
     tertiaryTextColor: palette.fg,
     tertiaryBorderColor: border,
-    fontSize: "12px",
     textColor: palette.fg,
     lineColor: line,
     mainBkg: surface,

@@ -1,6 +1,5 @@
 import type { Editor } from "@tiptap/react";
 import { MERMAID_THEME_PALETTES, type MermaidThemeName } from "@/components/ThemeProvider";
-import { scaleMermaidSvg } from "@/lib/mermaid-svg";
 
 const remapSvgIds = (svg: SVGElement, prefix: string) => {
   const renamed = new Map<string, string>();
@@ -33,13 +32,13 @@ const remapSvgIds = (svg: SVGElement, prefix: string) => {
 const renderMermaidSvg = async (source: string, theme: MermaidThemeName) => {
   const { renderMermaidSVG, THEMES } = await import("beautiful-mermaid");
   const palette = MERMAID_THEME_PALETTES[theme] ?? MERMAID_THEME_PALETTES["zinc-light"];
-  return scaleMermaidSvg(renderMermaidSVG(source, {
+  return renderMermaidSVG(source, {
     ...THEMES[theme] ?? THEMES["zinc-light"],
     ...palette,
     transparent: true,
     font: "Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif",
     padding: 16,
-  }));
+  });
 };
 
 export const embedMermaidForPreview = async (
